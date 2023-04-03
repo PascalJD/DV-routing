@@ -243,7 +243,7 @@ void route(int src, int dst, struct route *rt)
   {
     int min_cost = -1;
     int next_hop = -1;
-    for (int i = 0; i < num_nodes; i++) /* mplicitly choose the smallest node index */
+    for (int i = 0; i < num_nodes; i++) /* implicitly choose the smallest node index */
     {
       int cost_hop_i = lc[hop][i];
       int cost_i_dst = dt[i][dst]; // ;)
@@ -385,10 +385,13 @@ void print_lc()
 void print_route(int src, int dst, int n_pkts, struct route *rt)
 {
   printf("%d %d %d ", src, dst, n_pkts);
-  for (int i = 0; i < rt->length - 1; i++)
+  if (rt->length == -1)
   {
-    printf("%d>", rt->path[i]);
+    printf("null");
+    return;
   }
+  for (int i = 0; i < rt->length - 1; i++)
+    printf("%d>", rt->path[i]);
   if (rt->has_cycle)
     printf("%d(drop)\n", rt->path[rt->length - 1]);
   else

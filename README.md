@@ -1,2 +1,2 @@
 # DV-routing
-Distance vector simulation in C
+Discrete tinme distance vector routing simulation in C.
